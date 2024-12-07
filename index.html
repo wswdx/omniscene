@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>Omni-Scene: Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction</title>
+	<link rel="icon" type="image/x-icon" href="../assets/css/images/favicon.ico">
+    <meta content="Omni-Scene: Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction" name="description" />
+    <meta content="summary" name="twitter:card" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="static/css/template.css" rel="stylesheet" type="text/css" />
+    <link href="static/css/my_style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic", "Changa One:400,400italic", "Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Varela Round:400", "Bungee Shade:regular", "Roboto:300,regular,500"]
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        ! function (o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/video_comparison.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLDP9MKGC8"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MLDP9MKGC8');
+    </script>
+</head>
+
+<body>
+    <div class="section hero nerf-_v2">
+        <div class="container-2 nerf_header_v2 w-container">
+            <h1 class="nerf_title_v2">Omni-Scene: Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction</h1>
+            <div class="nerf_subheader_v2">Under Review</div>
+            <div class="nerf_subheader_v2">
+                <div>
+                    <a href="https://github.com/wswdx/" target="_blank" class="nerf_authors_v2">Dongxu Wei<span
+                            class="text-span_nerf"></span></a><sup> 1,3</sup>,&nbsp;&nbsp;
+                    <a href="https://github.com/lizhiqi49/" target="_blank" class="nerf_authors_v2">Zhiqi Li<span
+                            class="text-span_nerf"></span></a><sup> 1,2</sup>,&nbsp;&nbsp;
+                    <a href="https://ethliup.github.io/" target="_blank" class="nerf_authors_v2">Peidong Liu<span
+                            class="text-span_nerf"></span></a><sup> 1</sup>&nbsp;&nbsp;
+                </div>
+                <div>
+                    <h1 class="nerf_affiliation_v2"><sup>1 </sup>Westlake University</h1>,
+                    <h1 class="nerf_affiliation_v2"><sup>2 </sup>Zhejiang University</h1>,
+                    <h1 class="nerf_affiliation_v2"><sup>3 </sup>Westlake Institute for Advanced Study</h1>
+                </div>
+
+                <div class="external-link">
+                    <a class="btn" href="https://arxiv.org/abs/xxx.xx" role="button" target="_blank">
+                        <i class="ai ai-arxiv"></i> Arxiv </a>
+                    <a class="btn" href="assets/paper.pdf" role="button" target="_blank">
+                        <i class="fa fa-file-pdf"></i> Paper </a>
+                    <a class="btn" href="https://github.com/WU-CVGL/OmniScene" role="button" target="_blank" disabled>
+                        <i class="fa-brands fa-github"></i> Code </a>
+                    <a class="btn btn-large btn-light" href="https://youtu.be/mc8MXkJUv3Q" role="button" target="_blank" disabled>
+                        <i class="fa-brands fa-youtube"></i> Video </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div data-anchor="slide1" class="section nerf_section">
+        <div class="w-container grey_container">
+            <h2 class="grey-heading_nerf">Abstract</h2>
+            <p class="paragraph-3 nerf_text nerf_results_text">
+                <img  src="assets/images/omniscene.png">
+                <br>
+                Prior works employing pixel-based Gaussian representation have demonstrated efficacy in feed-forward sparse-view reconstruction. However, such representation
+                necessitates cross-view overlap for accurate depth estimation, and is challenged by object occlusions and frustum truncations. As a result, these methods require
+                scene-centric data acquisition to maintain cross-view overlap and complete scene visibility to circumvent occlusions and truncations, which limits their applicability
+                to scene-centric reconstruction. In contrast, in autonomous driving scenarios, a more practical paradigm is ego-centric reconstruction, which is characterized by
+                minimal cross-view overlap and frequent occlusions and truncations. The limitations of pixel-based representation thus hinder the utility of prior works in this task.
+                In light of this, this paper conducts an in-depth analysis of different representations, and introduces <b style="color: rgb(242, 152, 17);">Omni-Gaussian representation</b> with tailored network design to
+                complement their strengths and mitigate their drawbacks. Experiments show that our method significantly surpasses state-of-the-art methods, pixelSplat and MVSplat,
+                in ego-centric reconstruction, and achieves comparable performance to prior works in scene-centric reconstruction. Furthermore, we extend our method with diffusion
+                models, pioneering feed-forward multi-modal generation of 3D driving scenes.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="white_section_nerf  w-container">
+        <h1 class="grey-heading_nerf">Demo (feed-forward 3D scene reconstruction)</h1>
+        <div class="grid-container-1">
+            <div>
+                <p class="myprompt nerf_text">1. Exploring reconstructed 3D scenes (normal conditions). </p>
+                <video class="video" loop playsinline autoPlay muted src="assets/videos/recon_examples_normal.mov"></video>
+            </div>
+            <br>
+            <div>
+            <p class="myprompt nerf_text">2. Exploring reconstructed 3D scenes (extreme conditions like bad weather or low light).</p>
+            <video class="video" loop playsinline autoPlay muted src="assets/videos/recon_examples_extreme.mov"></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="white_section_nerf  w-container">
+        <h1 class="grey-heading_nerf">Demo (feed-forward 3D scene generation)</h1>
+        <div class="grid-container-1">
+            <div>
+                <p class="myprompt nerf_text">Exploring generated 3D scenes conditioned on texts, BEV maps and 3D boxes.</p>
+                <video class="video" loop playsinline autoPlay muted src="assets/videos/synth_examples.mov"></video>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">Method Overview</h2>
+        <div class="grid-container-1">
+            <img src="assets/images/overview.png">
+
+            <p><b>Figure.</b> Overview. <b>(a)</b> Obtain images `I^i(i=1~K)` from surrounding cameras with minimal overlap (e.g., adjacent image areas enclosed
+                by green rectangles) in a single frame, and extract 2D features `F^i(i=1~K)` using image backbone. <b>(b)</b> For Volume Builder,
+                we first use Triplane Transformer to lift 2D features to 3D volume space compressed by three orthogonal planes, where we employ cross-image
+                and cross-plane deformable attentions to enhance feature encoding. Then, Volume Decoder takes voxels as anchors, and predict nearby
+                Gaussians `\mathcal{G}_V` for each voxel given features sampled from the three planes through bilinear interpolation. <b>(c)</b> For Pixel Decorator, we
+                use Multi-View U-Net to propagate information across views and extract multiple 2D features for Pixel Decoder to predict pixel-based
+                Gaussians `\mathcal{G}_P` along rays. Through Volume-Pixel Collaborations including Projection-Based Feature Fusion and Depth-Guided Training
+                Decomposition, we can make `\mathcal{G}_V` and `\mathcal{G}_P` complement for each other, and obtain the full Omni-Gaussians `\mathcal{G}` for novel-view rendering.
+            </p>
+        </div>
+    </div>
+
+<div class="white_section_nerf grey_container w-container">
+<h2 class="grey-heading_nerf">BibTeX</h2>
+<div class="bibtex">
+    <pre><code>@article{wei2024omniscene,
+  title={Omni-Scene: Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction},
+  author={Wei, Dongxu and Li, Zhiqi and Liu, Peidong},
+  journal={arXiv preprint arXiv:xx.xx},
+  year={2024}
+}</code></pre>
+</div>
+</div>
+
+</body>
+<footer>
+    This project page is inspired by <a href="https://sweetdreamer3d.github.io/">SweetDreamer</a>.
+</footer>
+
+</html>
