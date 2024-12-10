@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
         WebFont.load({
             google: {
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="external-link">
-                    <a class="btn" href="https://arxiv.org/abs/xxx.xx" role="button" target="_blank">
+                    <a class="btn" href="https://arxiv.org/abs/2412.06273" role="button" target="_blank">
                         <i class="ai ai-arxiv"></i> Arxiv </a>
                     <a class="btn" href="assets/paper.pdf" role="button" target="_blank">
                         <i class="fa fa-file-pdf"></i> Paper </a>
@@ -130,14 +130,14 @@
         <div class="grid-container-1">
             <img src="assets/images/overview.png">
 
-            <p><b>Figure.</b> Overview. <b>(a)</b> Obtain images `I^i(i=1~K)` from surrounding cameras with minimal overlap (e.g., adjacent image areas enclosed
-                by green rectangles) in a single frame, and extract 2D features `F^i(i=1~K)` using image backbone. <b>(b)</b> For Volume Builder,
+            <p><b>Figure.</b> Overview. <b>(a)</b> Obtain images $\{\boldsymbol{I}^i\}^K_{i=1}$ from surrounding cameras with minimal overlap (e.g., adjacent image areas enclosed
+                by green rectangles) in a single frame, and extract 2D features $\{\boldsymbol{F}^i\}^K_{i=1}$ using image backbone. <b>(b)</b> For Volume Builder,
                 we first use Triplane Transformer to lift 2D features to 3D volume space compressed by three orthogonal planes, where we employ cross-image
                 and cross-plane deformable attentions to enhance feature encoding. Then, Volume Decoder takes voxels as anchors, and predict nearby
-                Gaussians `\mathcal{G}_V` for each voxel given features sampled from the three planes through bilinear interpolation. <b>(c)</b> For Pixel Decorator, we
+                Gaussians $\mathcal{G}_V$ for each voxel given features sampled from the three planes through bilinear interpolation. <b>(c)</b> For Pixel Decorator, we
                 use Multi-View U-Net to propagate information across views and extract multiple 2D features for Pixel Decoder to predict pixel-based
-                Gaussians `\mathcal{G}_P` along rays. Through Volume-Pixel Collaborations including Projection-Based Feature Fusion and Depth-Guided Training
-                Decomposition, we can make `\mathcal{G}_V` and `\mathcal{G}_P` complement for each other, and obtain the full Omni-Gaussians `\mathcal{G}` for novel-view rendering.
+                Gaussians $\mathcal{G}_P$ along rays. Through Volume-Pixel Collaborations including Projection-Based Feature Fusion and Depth-Guided Training
+                Decomposition, we can make $\mathcal{G}_V$ and $\mathcal{G}_P$ complement for each other, and obtain the full Omni-Gaussians $\mathcal{G}$ for novel-view rendering.
             </p>
         </div>
     </div>
@@ -146,11 +146,11 @@
 <h2 class="grey-heading_nerf">BibTeX</h2>
 <div class="bibtex">
     <pre><code>@article{wei2024omniscene,
-  title={Omni-Scene: Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction},
-  author={Wei, Dongxu and Li, Zhiqi and Liu, Peidong},
-  journal={arXiv preprint arXiv:xx.xx},
-  year={2024}
-}</code></pre>
+        title={Omni-Scene: Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction}, 
+        author={Dongxu Wei and Zhiqi Li and Peidong Liu},
+        journal={arXiv preprint arXiv:2412.06273},
+        year={2024},
+  }</code></pre>
 </div>
 </div>
 
